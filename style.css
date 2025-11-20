@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    background: black;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Vídeos de fundo */
+.video-bg video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s;
+    z-index: -3;
+}
+
+/* Estrelas */
+#stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    padding: 40px 10px;
+}
+
+.logo {
+    width: 140px;
+    border-radius: 20%;
+    box-shadow: 0 0 30px white;
+}
+
+h1 {
+    font-size: 50px;
+    margin: 10px 0;
+    color: #fff;
+    text-shadow: 0 0 20px #8ec4ff;
+}
+
+h2 {
+    font-size: 16px;
+    opacity: 0.8;
+    letter-spacing: 2px;
+}
+
+/* Convite */
+.convite {
+    max-width: 800px;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.convite h3 {
+    font-size: 24px;
+}
+
+.convite button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Contador */
+.contador {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#countdown {
+    font-size: 32px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px white;
+}
+
+/* Controle dos vídeos */
+.videos-control {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.videos-control button {
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+ 
+/* Botão holográfico */
+.holo-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    padding: 14px 22px;
+    font-size: 16px;
+    color: #ffffff;
+    background: rgba(0, 0, 20, 0.6);
+    border: 2px solid #17e9ff;
+    border-radius: 14px;
+    box-shadow: 0 0 15px #17e9ff, inset 0 0 8px #17e9ff;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    z-index: 9999;
+    transition: 0.25s ease-in-out;
+    animation: holoPulse 2s infinite ease-in-out;
+}
+
+.holo-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #35f3ff, inset 0 0 12px #35f3ff;
+}
+
+@keyframes holoPulse {
+    0% { box-shadow: 0 0 10px #00eaff; }
+    50% { box-shadow: 0 0 22px #00bbff; }
+    100% { box-shadow: 0 0 10px #00eaff; }
+}
