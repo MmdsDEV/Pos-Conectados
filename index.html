@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pós Conectados</title>
+    <link rel="icon" href="https://github.com/MmdsDEV/convite2/blob/main/mj.png?raw=true" type="image/png">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,65 +14,72 @@
 <!-- Música de fundo -->
 <audio id="bgMusic" src="tenda.mp3" loop></audio>
 
-<!-- Botão holográfico 3D -->
-<button id="musicToggle" class="holo-btn">
-    <span class="circle"></span>
-    <span class="label">🔊 Ligar Som</span>
-</button>
+<!-- Botão holográfico -->
+<button id="musicToggle" class="holo-btn">🔊 Ligar Som</button>
 
+<!-- Fundo com vídeos -->
+<div class="video-bg">
+    <video id="video1" src="vid.mp4" autoplay muted loop></video>
+</div>
 
+<!-- Estrelas -->
+<canvas id="stars"></canvas>
 
-    <!-- Fundo com vídeos -->
-    <div class="video-bg">
-        <video id="video1" src="vid.mp4" autoplay muted loop></video>
+<header>
+    <img src="img.jpg" class="logo">
+    <h1>PÓS CONECTADOS</h1>
+    <h2>Só Jesus sacia a sede mais profunda do coração</h2>
+</header>
+
+<section class="convite">
+    <h3>Convite</h3>
+    <p>
+        Você está mais que convidado(a) para estar com a gente hoje!
+        Uma noite especial, com alegria, acolhimento e muita presença de Deus —
+        e seria incrível ter você conosco nessa conexão.
+        <br><br>
+        <strong>Hoje • 20h00</strong> <br>
+        Comunidade Nsa. Senhora Aparecida <br>
+        Avenida C, 212 — Setor Água Branca
+    </p>
+</section>
+
+<section class="contador">
+    <div id="countdown" class="countdown-box">
+        <div class="time">
+            <span id="days">00</span>
+            <label>Dias</label>
+        </div>
+        <div class="time">
+            <span id="hours">00</span>
+            <label>Horas</label>
+        </div>
+        <div class="time">
+            <span id="minutes">00</span>
+            <label>Min</label>
+        </div>
+        <div class="time">
+            <span id="seconds">00</span>
+            <label>Seg</label>
+        </div>
     </div>
+</section>
 
-    <!-- Efeito estrelas -->
-    <canvas id="stars"></canvas>
+<script src="script.js"></script>
 
-    <header>
-        <img src="img.jpg" class="logo">
-        <h1>PÓS CONECTADOS</h1>
-        <h2>Só Jesus sacia a sede mais profunda do coração</h2>
-    </header>
-
-    <section class="convite">
-        <h3>Convite</h3>
-        <p>
-            Você está mais que convidado(a) para estar com a gente hoje!
-            Uma noite especial, com alegria, acolhimento e muita presença de Deus —
-            e seria incrível ter você conosco nessa conexão.
-            <br><br>
-            <strong>Hoje • 20h00</strong> <br>
-            Comunidade Nsa. Senhora Aparecida <br>
-            Avenida C, 212 — Setor Água Branca
-        </p>
-    </section>
-
-    <section class="contador">
-        <h3>Faltam</h3>
-        <div id="countdown"></div>
-    </section>
-
-    <script src="script.js"></script>
-
-    <!-- Script para o botão da música -->
-    <script>
-        const music = document.getElementById("bgMusic");
+<!-- Botão música -->
+<script>
+const music = document.getElementById("bgMusic");
 const toggleBtn = document.getElementById("musicToggle");
 let musicPlaying = false;
 
-// tentar autoplay silencioso
 setTimeout(() => {
     music.play().then(() => {
         musicPlaying = true;
         toggleBtn.innerHTML = "🔈 Desligar Som";
-    }).catch(() => {
-        // não conseguiu tocar → usuário precisa clicar
-    });
+    }).catch(() => {});
 }, 500);
 
-// clique liga/desliga
 toggleBtn.addEventListener("click", () => {
     if (musicPlaying) {
         music.pause();
@@ -83,9 +91,7 @@ toggleBtn.addEventListener("click", () => {
         musicPlaying = true;
     }
 });
-
-    </script>
+</script>
 
 </body>
-
 </html>
