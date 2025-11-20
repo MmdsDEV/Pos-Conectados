@@ -6,7 +6,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Vídeos */
+/* VÍDEO RESPONSIVO */
 .video-bg video {
     position: fixed;
     top: 0;
@@ -18,7 +18,7 @@ body {
     z-index: -3;
 }
 
-/* Estrelas */
+/* ESTRELAS */
 #stars {
     position: fixed;
     top: 0;
@@ -28,7 +28,7 @@ body {
     z-index: -2;
 }
 
-/* Cabeçalho */
+/* CABEÇALHO */
 header {
     text-align: center;
     padding: 40px 10px;
@@ -36,24 +36,25 @@ header {
 
 .logo {
     width: 140px;
+    max-width: 40%;
     border-radius: 20%;
     box-shadow: 0 0 30px white;
 }
 
+/* TITULOS RESPONSIVOS */
 h1 {
-    font-size: 50px;
+    font-size: clamp(32px, 6vw, 60px);
     margin: 10px 0;
-    color: #fff;
     text-shadow: 0 0 20px #8ec4ff;
 }
 
 h2 {
-    font-size: 16px;
+    font-size: clamp(12px, 3vw, 20px);
     opacity: 0.8;
     letter-spacing: 2px;
 }
 
-/* Caixa convite */
+/* CAIXA CONVITE */
 .convite {
     max-width: 800px;
     margin: 40px auto;
@@ -65,53 +66,52 @@ h2 {
 }
 
 .convite h3 {
-    font-size: 24px;
+    font-size: clamp(20px, 4vw, 28px);
 }
 
-/* Contador */
+.convite p {
+    font-size: clamp(14px, 3.5vw, 18px);
+    line-height: 1.6;
+}
+
+/* CONTADOR RESPONSIVO */
 .countdown-box {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
     margin-top: 20px;
     font-family: "Share Tech Mono", monospace;
 }
 
 .countdown-box .time {
     background: rgba(255, 255, 255, 0.15);
-    padding: 15px 20px;
+    padding: clamp(10px, 4vw, 20px);
     border-radius: 10px;
     backdrop-filter: blur(6px);
     text-align: center;
+    min-width: 80px;
     box-shadow: 0 0 12px rgba(255,255,255,0.2);
-    transition: transform 0.2s ease;
-}
-
-.countdown-box .time:hover {
-    transform: scale(1.05);
 }
 
 .countdown-box span {
-    font-size: 2.4rem;
+    font-size: clamp(22px, 6vw, 45px);
     font-weight: bold;
     color: white;
-    display: block;
 }
 
 .countdown-box label {
-    font-size: 0.9rem;
+    font-size: clamp(10px, 3vw, 14px);
     color: #ddd;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
-/* Botão holográfico */
+/* BOTÃO HOLOGRÁFICO */
 .holo-btn {
     position: fixed;
     bottom: 25px;
     right: 25px;
     padding: 14px 22px;
-    font-size: 16px;
+    font-size: clamp(12px, 4vw, 18px);
     color: #ffffff;
     background: rgba(0, 0, 20, 0.6);
     border: 2px solid #17e9ff;
@@ -120,13 +120,15 @@ h2 {
     backdrop-filter: blur(5px);
     cursor: pointer;
     z-index: 9999;
-    transition: 0.25s ease-in-out;
     animation: holoPulse 2s infinite ease-in-out;
 }
 
-.holo-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px #35f3ff, inset 0 0 12px #35f3ff;
+@media (max-width: 480px) {
+    .holo-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 16px;
+    }
 }
 
 @keyframes holoPulse {
