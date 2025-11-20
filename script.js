@@ -1,25 +1,24 @@
 // Vídeos
 const v1 = document.getElementById("video1");
-const v2 = document.getElementById("video2");
+v1.style.opacity = 1;
 
-function setVideo(num) {
-    if (num === 1) {
-        v1.style.opacity = 1;
-        v2.style.opacity = 0;
-    } else {
-        v1.style.opacity = 0;
-        v2.style.opacity = 1;
-    }
+// CONTADOR ⏳ — hoje 20h → se passou, próxima quinta
+let eventDate = new Date();
+eventDate.setHours(20, 0, 0, 0);
+
+function getNextThursday() {
+    const now = new Date();
+    let diff = (4 - now.getDay() + 7) % 7;
+    if (diff === 0) diff = 7;
+    const nextThu = new Date();
+    nextThu.setDate(now.getDate() + diff);
+    nextThu.setHours(20, 0, 0, 0);
+    return nextThu;
 }
-setVideo(1);
 
-// Contador — evento hoje às 20h
-const eventDate = new Date();
-eventDate.setHours(20, 0, 0, 0); // Hoje às 20:00
-
-// Se já passou das 20h, muda para amanhã às 20h
+// Se já passou das 20h hoje → próxima quinta
 if (eventDate - new Date() <= 0) {
-    eventDate.setDate(eventDate.getDate() + 1);
+    eventDate = getNextThursday();
 }
 
 function updateCountdown() {
@@ -27,7 +26,13 @@ function updateCountdown() {
     const diff = eventDate - now;
 
     if (diff <= 0) {
-        document.getElementById("countdown").innerHTML = "Começou!";
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+
+        document.getElementById("countdown").innerHTML =
+            `<div class="message">até a próxima quinta</div>`;
         return;
     }
 
@@ -36,8 +41,10 @@ function updateCountdown() {
     const m = Math.floor((diff / (1000 * 60)) % 60);
     const s = Math.floor((diff / 1000) % 60);
 
-    document.getElementById("countdown").innerHTML =
-        `${d}d ${h}h ${m}m ${s}s`;
+    document.getElementById("days").textContent = d.toString().padStart(2, "0");
+    document.getElementById("hours").textContent = h.toString().padStart(2, "0");
+    document.getElementById("minutes").textContent = m.toString().padStart(2, "0");
+    document.getElementById("seconds").textContent = s.toString().padStart(2, "0");
 }
 
 setInterval(updateCountdown, 1000);
@@ -45,7 +52,7 @@ updateCountdown();
 
 // Estrelas
 const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("d");
+const ctx = canvas.getContext("2d");
 
 function resize() {
     canvas.width = innerWidth;
@@ -78,11 +85,3 @@ function drawStars() {
     requestAnimationFrame(drawStars);
 }
 drawStars();
-
-// Copiar convite
-document.getElementById("copyBtn").onclick = () => {
-    navigator.clipboard.writeText(
-        "Você está convidado para o Pós Conectados! Quinta • 20h00 — Comunidade Nsa. Senhora Aparecida, Avenida C, 212 — Setor Água Branca."
-    );
-    alert("Convite copiado!");
-};
